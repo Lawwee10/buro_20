@@ -2,13 +2,6 @@ import os
 from cryptography.fernet import Fernet
 
 
-# key = Fernet.generate_key()
-# print(key)
-# f = Fernet(key)
-# # token = f.encrypt(b"hello, world!")
-# # print(token)
-# # print(f.decrypt(token))
-
 def write_key():
     if os.path.exists("key.key"):
         with open("key.key", "wb") as fe:
@@ -28,7 +21,6 @@ def add(z):
         with open("password.txt", "w") as f:
             f.write(token1, token2)
 
-
 def view(z, login_password):
     if os.path.exists(password.txt):
         with open("password,txt", "r") as m:
@@ -38,12 +30,11 @@ def view(z, login_password):
                     login2 = parts[0]
                     password2 = parts[1]
     login = z.decrypt(login2)
-    login_password.append(login)
     password = z.decrypt(password2)  
-    login_password.append(password)   
     print("логин:", login, "|", "пароль:", password)
+    login_password.append(login)
+    login_password.append(password)   
     return login_password
-
 
 if __name__ == "__main__":
     key = Fernet.generate_key()
